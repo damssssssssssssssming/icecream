@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f0f0f0;
+    }
+    .welcome-container {
+      text-align: center;
+      background-color: #fff;
+      padding: 20px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+    }
+    .response-btn {
+      margin: 10px;
+      padding: 10px 20px;
+      background-color: #f8b400;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    .response-btn:hover {
+      background-color: #f89b00;
+    }
+  </style>
+</head>
+<body>
+  <div class="welcome-container">
+    <h1>Hi Shine!, it's been a while right?</h1>
+    <p>How's life so far?</p>
+    <button class="response-btn" data-response="good">Good</button>
+    <button class="response-btn" data-response="so-so">So-so</button>
+    <button class="response-btn" data-response="not-great">Not great</button>
+  </div>
+
+  <script>
+    // Event listeners for the buttons
+    document.querySelectorAll('.response-btn').forEach(button => {
+      button.addEventListener('click', (event) => {
+        const response = event.target.getAttribute('data-response');
+        let message = '';
+        
+        // Set message based on user response
+        switch (response) {
+          case 'good':
+            message = 'That\'s awesome! Redirecting you...';
+            break;
+          case 'so-so':
+            message = 'Hang in there! Redirecting you...';
+            break;
+          case 'not-great':
+            message = 'I\'m sorry to hear that. Cheer UP Engineer! Redirecting you...';
+            break;
+        }
+
+        document.querySelector('.welcome-container').innerHTML = `<p>${message}</p>`;
+
+        setTimeout(() => {
+          window.location.href = 'bulaga.html';
+        }, 2000);
+      });
+    });
+  </script>
+</body>
+</html>
